@@ -67,9 +67,9 @@ export default function Hero() {
         </div>
 
         {/* Bottom Feature Bar & Trust Bar */}
-        <div className="mt-12 lg:mt-16 border-t border-white/5 pt-8 flex flex-col lg:flex-row items-center justify-between gap-6 w-full">
-          {/* Feature Badges (Left) */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 w-full lg:w-auto justify-between lg:justify-start lg:gap-8">
+        <div className="mt-12 lg:mt-16 border-t border-white/5 pt-8 w-full">
+          {/* Mobile/Tablet Grid: 2 columns, contains all 6 items */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-6 gap-x-8 w-full max-w-[310px] sm:max-w-xl mx-auto lg:hidden">
             <div className="flex items-center gap-3">
               <Building2 className="h-5 w-5 text-brand-cyan shrink-0" strokeWidth={1.5} />
               <span className="text-xs font-semibold text-slate-200 leading-tight">World-Class<br />Hospitals</span>
@@ -86,24 +86,62 @@ export default function Hero() {
               <Headphones className="h-5 w-5 text-brand-teal shrink-0" strokeWidth={1.5} />
               <span className="text-xs font-semibold text-slate-200 leading-tight">End-to-End<br />Support</span>
             </div>
+            {/* Trust Items on Mobile: styled to match the grid exactly */}
+            <div className="flex items-center gap-3">
+              <Globe className="h-5 w-5 text-brand-cyan shrink-0" strokeWidth={1.5} />
+              <div className="flex flex-col text-left">
+                <span className="text-[9px] text-slate-400 font-semibold tracking-wider uppercase leading-none mb-0.5">Trusted by Patients</span>
+                <span className="text-xs font-bold text-white leading-none">from 50+ Countries</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <PhoneCall className="h-5 w-5 text-brand-teal shrink-0" strokeWidth={1.5} />
+              <div className="flex flex-col text-left">
+                <span className="text-[9px] text-slate-400 font-semibold tracking-wider uppercase leading-none mb-0.5">24/7 International</span>
+                <span className="text-xs font-bold text-white leading-none">Patient Support</span>
+              </div>
+            </div>
           </div>
 
-          {/* Trust Panel Widget (Right) */}
-          <div className="w-full lg:w-auto flex justify-center lg:justify-end">
-            <div className="glass-panel glass-panel-glow rounded-full px-6 py-2.5 flex items-center gap-6 border border-white/10 bg-slate-900/40 backdrop-blur-md">
+          {/* Desktop Layout: Badges on left, Capsule on right */}
+          <div className="hidden lg:flex items-center justify-between gap-6 w-full">
+            {/* Feature Badges (Left) */}
+            <div className="flex items-center gap-8">
               <div className="flex items-center gap-3">
-                <Globe className="h-4 w-4 text-brand-cyan shrink-0" strokeWidth={1.5} />
-                <div className="flex flex-col">
-                  <span className="text-[9px] text-slate-400 font-semibold tracking-wider uppercase leading-none mb-0.5">Trusted by Patients</span>
-                  <span className="text-xs font-bold text-white leading-none">from 50+ Countries</span>
-                </div>
+                <Building2 className="h-5 w-5 text-brand-cyan shrink-0" strokeWidth={1.5} />
+                <span className="text-xs font-semibold text-slate-200 leading-tight">World-Class<br />Hospitals</span>
               </div>
-              <div className="h-6 w-px bg-white/10" />
               <div className="flex items-center gap-3">
-                <PhoneCall className="h-4 w-4 text-brand-teal shrink-0" strokeWidth={1.5} />
-                <div className="flex flex-col">
-                  <span className="text-[9px] text-slate-400 font-semibold tracking-wider uppercase leading-none mb-0.5">24/7 International</span>
-                  <span className="text-xs font-bold text-white leading-none">Patient Support</span>
+                <UserCheck className="h-5 w-5 text-brand-teal shrink-0" strokeWidth={1.5} />
+                <span className="text-xs font-semibold text-slate-200 leading-tight">Top Specialist<br />Doctors</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <HeartHandshake className="h-5 w-5 text-brand-cyan shrink-0" strokeWidth={1.5} />
+                <span className="text-xs font-semibold text-slate-200 leading-tight">Personalized<br />Care</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Headphones className="h-5 w-5 text-brand-teal shrink-0" strokeWidth={1.5} />
+                <span className="text-xs font-semibold text-slate-200 leading-tight">End-to-End<br />Support</span>
+              </div>
+            </div>
+
+            {/* Trust Panel Widget (Right) */}
+            <div className="flex justify-end">
+              <div className="glass-panel glass-panel-glow rounded-full px-6 py-2.5 flex items-center gap-6 border border-white/10 bg-slate-900/40 backdrop-blur-md">
+                <div className="flex items-center gap-3">
+                  <Globe className="h-4 w-4 text-brand-cyan shrink-0" strokeWidth={1.5} />
+                  <div className="flex flex-col text-left">
+                    <span className="text-[9px] text-slate-400 font-semibold tracking-wider uppercase leading-none mb-0.5">Trusted by Patients</span>
+                    <span className="text-xs font-bold text-white leading-none">from 50+ Countries</span>
+                  </div>
+                </div>
+                <div className="h-6 w-px bg-white/10" />
+                <div className="flex items-center gap-3">
+                  <PhoneCall className="h-4 w-4 text-brand-teal shrink-0" strokeWidth={1.5} />
+                  <div className="flex flex-col text-left">
+                    <span className="text-[9px] text-slate-400 font-semibold tracking-wider uppercase leading-none mb-0.5">24/7 International</span>
+                    <span className="text-xs font-bold text-white leading-none">Patient Support</span>
+                  </div>
                 </div>
               </div>
             </div>
