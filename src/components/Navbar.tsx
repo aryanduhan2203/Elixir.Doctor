@@ -1,15 +1,78 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const sectionIds = [
+      "home",
+      "about",
+      "treatments",
+      "hospitals",
+      "destinations",
+      "journey",
+      "testimonials",
+      "contact",
+    ];
+
+    const handleScroll = () => {
+      // Top of page override
+      if (window.scrollY < 50) {
+        setActiveSection("home");
+        return;
+      }
+
+      // Bottom of page override
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      if (scrollPosition >= docHeight - 100) {
+        setActiveSection("contact");
+        return;
+      }
+    };
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-25% 0px -55% 0px",
+      threshold: 0.1,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Initial check in case page is loaded scrolled down
+    handleScroll();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home", active: true },
+    { name: "Home", href: "#home" },
     { name: "About Us", href: "#about" },
     { name: "Treatments", href: "#treatments", hasDropdown: true },
     { name: "Hospitals", href: "#hospitals" },
@@ -42,26 +105,29 @@ export default function Navbar() {
 
           {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <div key={link.name} className="relative group">
-                <Link
-                  href={link.href}
-                  className={`flex items-center gap-1 text-sm font-medium transition-colors py-2 ${
-                    link.active
-                      ? "text-brand-cyan"
-                      : "text-slate-300 hover:text-white"
-                  }`}
-                >
-                  {link.name}
-                  {link.hasDropdown && (
-                    <ChevronDown className="h-4 w-4 text-slate-400 group-hover:text-white transition-colors" />
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.replace("#", "");
+              return (
+                <div key={link.name} className="relative group">
+                  <Link
+                    href={link.href}
+                    className={`flex items-center gap-1 text-sm font-medium transition-colors py-2 ${
+                      isActive
+                        ? "text-brand-cyan"
+                        : "text-slate-300 hover:text-white"
+                    }`}
+                  >
+                    {link.name}
+                    {link.hasDropdown && (
+                      <ChevronDown className="h-4 w-4 text-slate-400 group-hover:text-white transition-colors" />
+                    )}
+                  </Link>
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-cyan rounded-full" />
                   )}
-                </Link>
-                {link.active && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-cyan rounded-full" />
-                )}
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
 
           {/* Action Button */}
@@ -100,20 +166,23 @@ export default function Navbar() {
       {isOpen && (
         <div className="lg:hidden border-b border-white/5 bg-dark-bg/95 backdrop-blur-lg">
           <div className="space-y-1 px-4 pb-6 pt-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`block rounded-md px-3 py-2 text-base font-medium transition-colors ${
-                  link.active
-                    ? "bg-brand-cyan/10 text-brand-cyan"
-                    : "text-slate-300 hover:bg-slate-800 hover:text-white"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.replace("#", "");
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block rounded-md px-3 py-2 text-base font-medium transition-colors ${
+                    isActive
+                      ? "bg-brand-cyan/10 text-brand-cyan"
+                      : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
             <div className="pt-4">
               <Link
                 href="https://wa.me/917300123456"

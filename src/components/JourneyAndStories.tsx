@@ -92,7 +92,7 @@ export default function JourneyAndStories() {
           </div>
 
           {/* Right Column: Stories Testimonial Card */}
-          <div className="lg:col-span-5 relative">
+          <div id="testimonials" className="lg:col-span-5 relative">
             
             {/* Left Floating Arrow */}
             <button
