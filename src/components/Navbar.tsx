@@ -97,9 +97,9 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <span className="text-xl font-bold tracking-tight text-white">
-              Elixir<span className="text-brand-cyan">.</span>
-              <span className="font-extrabold text-brand-teal">Doctor</span>
+            <span className="text-xl font-bold tracking-tight">
+              <span className="text-brand-cyan">Elixir.</span>
+              <span className="font-extrabold text-white">Doctor</span>
             </span>
           </Link>
 

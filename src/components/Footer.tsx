@@ -68,8 +68,8 @@ export default function Footer() {
                 />
               </div>
               <span className="text-xl font-semibold tracking-tight">
-                <span className="text-brand-cyan">Elixir</span>
-                <span className="text-white">.Doctor</span>
+                <span className="text-brand-cyan">Elixir.</span>
+                <span className="text-white">Doctor</span>
               </span>
             </Link>
             <p className="text-xs sm:text-sm text-slate-400 font-light leading-relaxed">
