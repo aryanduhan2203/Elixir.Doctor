@@ -1267,15 +1267,20 @@ export default function SpecialtyDetailView({ slug }: { slug: string }) {
 
       <main className="min-h-screen bg-[#fafbfc] text-slate-800 selection:bg-brand-teal/20 pt-20">
         {/* 1. HERO HEADER SECTION */}
-        <section 
-          className="relative py-16 lg:py-24 text-white overflow-hidden bg-no-repeat bg-cover bg-gradient-to-br from-[#020a1a] to-[#010610]"
-          style={specialtiesWithBanners.includes(data.id) ? { 
-            backgroundImage: `url('/images/treatments/${data.id}_hero_bg.png')`,
-            backgroundPosition: "center right"
-          } : undefined}
-        >
-          {/* Subtle grid watermark for clean fallback pages */}
-          {!specialtiesWithBanners.includes(data.id) && (
+        <section className="relative py-10 sm:py-16 lg:py-24 text-white overflow-hidden bg-gradient-to-br from-[#020a1a] to-[#010610]">
+          {/* Responsive Background Banner Image Overlay */}
+          {specialtiesWithBanners.includes(data.id) ? (
+            <div className="absolute inset-0 pointer-events-none z-0">
+              <img 
+                src={`/images/treatments/${data.id}_hero_bg.png`} 
+                alt={data.name} 
+                className="h-full w-full object-cover object-right opacity-20 lg:opacity-100 transition-opacity duration-300"
+              />
+              {/* Left-to-right gradient mask for seamless blending and text readability */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#020a1a] via-[#020a1a]/90 lg:via-[#020a1a]/30 to-transparent" />
+            </div>
+          ) : (
+            /* Subtle grid watermark for clean fallback pages */
             <>
               <div className="absolute inset-0 grid-bg opacity-[0.04] pointer-events-none" />
               <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full radial-glow-teal opacity-25 pointer-events-none" />
@@ -1294,8 +1299,8 @@ export default function SpecialtyDetailView({ slug }: { slug: string }) {
                   <ChevronRight className="h-3 w-3" />
                   <span className="text-brand-cyan">{data.name}</span>
                 </div>
-
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-normal leading-tight text-white">
+ 
+                <h1 className="text-2xl sm:text-3xl lg:text-5xl font-serif font-normal leading-tight text-white">
                   {data.name}
                 </h1>
                 
