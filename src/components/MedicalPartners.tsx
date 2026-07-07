@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-function ApolloLogo() {
+export function ApolloLogo() {
   return (
     <svg viewBox="0 0 160 40" className="h-10 w-auto select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M15 15C13 18 13 22 15 25C17 28 20 29 23 27C26 25 27 22 25 19C23 16 19 14 15 15Z" fill="#E2A612" />
@@ -15,7 +15,7 @@ function ApolloLogo() {
   );
 }
 
-function FortisLogo() {
+export function FortisLogo() {
   return (
     <svg viewBox="0 0 160 40" className="h-10 w-auto select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M18 10L14 16H22L18 10Z" fill="#128A43" />
@@ -29,7 +29,7 @@ function FortisLogo() {
   );
 }
 
-function MedantaLogo() {
+export function MedantaLogo() {
   return (
     <svg viewBox="0 0 160 40" className="h-10 w-auto select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M8 12H28M8 16H28M8 20H28M8 24H28M8 28H28M15 5V35M18 5V35M21 5V35" stroke="#E62C27" strokeWidth="1.5" />
@@ -39,7 +39,7 @@ function MedantaLogo() {
   );
 }
 
-function MaxLogo() {
+export function MaxLogo() {
   return (
     <svg viewBox="0 0 160 40" className="h-10 w-auto select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="5" y="10" width="20" height="20" rx="3" fill="#006699" transform="rotate(45 15 20)" />
@@ -50,7 +50,7 @@ function MaxLogo() {
   );
 }
 
-function ArtemisLogo() {
+export function ArtemisLogo() {
   return (
     <svg viewBox="0 0 160 40" className="h-10 w-auto select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M18 6C16 12 12 16 7 20C12 24 16 28 18 34C20 28 24 24 29 20C24 16 20 12 18 6Z" fill="#A37E36" />
@@ -61,7 +61,7 @@ function ArtemisLogo() {
   );
 }
 
-function BlkMaxLogo() {
+export function BlkMaxLogo() {
   return (
     <svg viewBox="0 0 160 40" className="h-10 w-auto select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="5" y="10" width="20" height="20" rx="3" fill="#006699" />

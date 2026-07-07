@@ -116,3 +116,27 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Custom Light Scrollbar for Light-Themed Containers */
+.light-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+}
+
+.light-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.light-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.light-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3); /* slate-400 style with opacity */
+  border-radius: 9999px;
+}
+
+.light-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}

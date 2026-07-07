@@ -5,14 +5,14 @@ import { ArrowRight, HeartPulse, Ribbon, Bone, Brain, Sparkles, Baby, HandHeart,
 
 export default function Specialties() {
   const specialties = [
-    { name: "Cardiology", icon: HeartPulse },
-    { name: "Oncology", icon: Ribbon },
-    { name: "Orthopedics", icon: Bone },
-    { name: "Neurology", icon: Brain },
-    { name: "Cosmetic Surgery", icon: Sparkles },
-    { name: "IVF & Fertility", icon: Baby },
-    { name: "Organ Transplant", icon: HandHeart },
-    { name: "Wellness & Preventive Care", icon: Flower2 },
+    { name: "Cardiology", icon: HeartPulse, slug: "cardiology" },
+    { name: "Oncology", icon: Ribbon, slug: "oncology" },
+    { name: "Orthopedics", icon: Bone, slug: "orthopedics" },
+    { name: "Neurology", icon: Brain, slug: "neurology" },
+    { name: "Cosmetic Surgery", icon: Sparkles, slug: "cosmetic-surgery" },
+    { name: "IVF & Fertility", icon: Baby, slug: "fertility" },
+    { name: "Organ Transplant", icon: HandHeart, slug: "organ-transplant" },
+    { name: "Wellness & Preventive Care", icon: Flower2, slug: "wellness" },
   ];
 
   return (
@@ -34,15 +34,16 @@ export default function Specialties() {
           {specialties.map((spec) => {
             const Icon = spec.icon;
             return (
-              <div
+              <Link
                 key={spec.name}
-                className="group flex flex-col items-center justify-center p-4 sm:p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-brand-teal/30 hover:shadow-lg hover:shadow-slate-200/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-center flex-shrink-0 w-[125px] sm:w-[145px] lg:w-auto snap-align-start min-h-[145px] sm:min-h-[165px] lg:min-h-0"
+                href={`/treatments/${spec.slug}`}
+                className="group flex flex-col items-center justify-center p-4 sm:p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-brand-teal/30 hover:shadow-lg hover:shadow-slate-200/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-center flex-shrink-0 w-[125px] sm:w-[145px] lg:w-auto snap-align-start min-h-[145px] sm:min-h-[165px] lg:min-h-0 cursor-pointer"
               >
                 <Icon className="h-9 w-9 text-slate-600 group-hover:text-brand-teal transition-colors duration-300 mb-4" strokeWidth={1.3} />
                 <h3 className="text-xs sm:text-sm font-semibold text-slate-700 group-hover:text-slate-950 transition-colors leading-tight">
                   {spec.name}
                 </h3>
-              </div>
+              </Link>
             );
           })}
         </div>
@@ -50,7 +51,7 @@ export default function Specialties() {
         {/* Bottom Button */}
         <div className="mt-8 sm:mt-10 text-center">
           <Link
-            href="#treatments"
+            href="/treatments"
             className="group inline-flex items-center gap-2 rounded-full bg-slate-900 px-7 py-3 text-sm font-semibold text-white hover:bg-slate-800 hover:-translate-y-0.5 active:translate-y-0 transition-all shadow-md shadow-slate-900/10"
           >
             <span>View All Treatments</span>
